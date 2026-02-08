@@ -1,0 +1,211 @@
+#+hugo_base_dir: ../
+#+hugo_section: posts
+
+#+hugo_auto_set_lastmod: t
+
+#+author: Jonathan Chu
+
+* Posts
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: posts
+:END:
+
+** DONE Your First Hour in Emacs — Skip the Tutorial, Do This Instead :emacs:beginners:getting_started:
+:PROPERTIES:
+:EXPORT_FILE_NAME: your-first-hour-in-emacs
+:EXPORT_DATE: 2026-02-07
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :series ["Getting Started with Emacs"]
+:END:
+
+Most Emacs tutorials start the same way: "Run the built-in tutorial with =C-h t=." We're going to skip that entirely. Instead, let's get you productive in Emacs in under an hour with a modern setup.
+
+#+begin_export hugo
+{{< youtube dQw4w9WxXcQ >}}
+#+end_export
+
+*** Install Emacs 29+
+
+Make sure you're running Emacs 29 or later — it includes tree-sitter support, =eglot= for LSP, and a much better default experience.
+
+On macOS:
+#+begin_src shell
+brew install emacs-plus@30 --with-native-comp
+#+end_src
+
+On Fedora:
+#+begin_src shell
+sudo dnf install emacs
+#+end_src
+
+On Ubuntu:
+#+begin_src shell
+sudo snap install emacs --classic
+#+end_src
+
+*** The First 5 Things to Configure
+
+Create =~/.emacs.d/init.el= (or =~/.config/emacs/init.el=) and add:
+
+#+begin_src emacs-lisp
+;; Clean up the UI
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(setq inhibit-startup-message t)
+
+;; Line numbers in programming modes
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+
+;; Remember recent files
+(recentf-mode 1)
+
+;; Save your place in files
+(save-place-mode 1)
+
+;; Don't litter the filesystem with backup files
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+#+end_src
+
+*** Install Your First Packages
+
+Set up =use-package= (built-in since Emacs 29) and install the essentials:
+
+#+begin_src emacs-lisp
+;; Set up package archives
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+;; Vertico — better minibuffer completion
+(use-package vertico
+  :ensure t
+  :init (vertico-mode))
+
+;; Marginalia — helpful annotations in the minibuffer
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode))
+
+;; Magit — the best Git interface
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
+#+end_src
+
+*** What's Next?
+
+You now have a clean, modern Emacs with completion, Git integration, and a solid foundation. In the next article, we'll cover the 10 packages every new Emacs user should install.
+
+** DONE The 10 Packages Every New Emacs User Should Install :emacs:packages:beginners:
+:PROPERTIES:
+:EXPORT_FILE_NAME: 10-packages-every-new-emacs-user-should-install
+:EXPORT_DATE: 2026-02-08
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :series ["Getting Started with Emacs"]
+:END:
+
+The Emacs package ecosystem is vast — MELPA alone has over 5,000 packages. That's exciting but also overwhelming. Here are the 10 packages that give you the most value for the least configuration.
+
+#+begin_export hugo
+{{< youtube dQw4w9WxXcQ >}}
+#+end_export
+
+*** 1. Vertico
+
+Modern, minimal vertical completion UI. Replaces the default minibuffer completion with something you'd actually want to use.
+
+#+begin_src emacs-lisp
+(use-package vertico
+  :ensure t
+  :init (vertico-mode))
+#+end_src
+
+*** 2. Consult
+
+Search and navigation commands that integrate with Vertico. =consult-ripgrep=, =consult-line=, and =consult-buffer= will change how you navigate code.
+
+#+begin_src emacs-lisp
+(use-package consult
+  :ensure t
+  :bind (("C-s" . consult-line)
+         ("C-x b" . consult-buffer)
+         ("M-g g" . consult-goto-line)))
+#+end_src
+
+*** 3. Marginalia
+
+Adds helpful annotations next to completion candidates — file sizes, docstrings, keybindings.
+
+#+begin_src emacs-lisp
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode))
+#+end_src
+
+*** 4. Orderless
+
+Flexible completion matching. Type any part of what you're looking for in any order.
+
+#+begin_src emacs-lisp
+(use-package orderless
+  :ensure t
+  :custom (completion-styles '(orderless basic)))
+#+end_src
+
+*** 5. Magit
+
+The best Git interface ever made. Not an exaggeration. Once you use Magit, you'll never want to go back to the command line for Git.
+
+#+begin_src emacs-lisp
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
+#+end_src
+
+*** 6. Org-mode
+
+Technically built-in, but worth mentioning because it's often why people come to Emacs in the first place. Notes, tasks, literate programming, and more.
+
+*** 7. Which-key
+
+Shows available keybindings in a popup. Essential for discoverability when you're learning.
+
+#+begin_src emacs-lisp
+(use-package which-key
+  :ensure t
+  :init (which-key-mode))
+#+end_src
+
+*** 8. Corfu
+
+In-buffer completion popup. Fast, minimal, works with Eglot's LSP completions out of the box.
+
+#+begin_src emacs-lisp
+(use-package corfu
+  :ensure t
+  :init (global-corfu-mode))
+#+end_src
+
+*** 9. Eglot
+
+Built-in LSP client (since Emacs 29). Minimal configuration, just install a language server and go.
+
+#+begin_src emacs-lisp
+;; Eglot is built-in, just hook it up
+(add-hook 'python-mode-hook #'eglot-ensure)
+(add-hook 'js-mode-hook #'eglot-ensure)
+(add-hook 'rust-mode-hook #'eglot-ensure)
+#+end_src
+
+*** 10. Doom Themes
+
+Even if you don't use Doom Emacs, the theme collection is excellent. =doom-one= and =doom-gruvbox= are crowd favorites.
+
+#+begin_src emacs-lisp
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-one t))
+#+end_src
+
+*** Putting It All Together
+
+All of these packages work together harmoniously. Vertico + Consult + Marginalia + Orderless form a completion framework that rivals anything in VS Code, and Magit + Org-mode are the power tools that keep experienced users on Emacs for decades.

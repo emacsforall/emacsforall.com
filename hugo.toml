@@ -1,0 +1,95 @@
+baseURL = "https://emacsforall.com/"
+languageCode = "en-us"
+title = "Emacs for All"
+[pagination]
+  pagerSize = 10
+
+[module]
+  [[module.imports]]
+    path = "github.com/adityatelange/hugo-PaperMod"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
+[params]
+  env = "production"
+  description = "Modern Emacs for Everyone — clear tutorials, real-world workflows, and a welcoming community."
+  author = "Jonathan Chu"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = false
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  displayFullLangName = true
+
+  [params.homeInfoParams]
+    Title = "Modern Emacs for Everyone"
+    Content = """
+Clear tutorials, real-world workflows, and a welcoming community. \
+Whether you're migrating from VS Code, curious about org-mode, or ready \
+to build your own editing environment from scratch — we're here to help.
+
+*No gatekeeping. No "read the manual." Just practical paths into one of \
+the most rewarding tools you'll ever learn.*
+"""
+
+  [[params.socialIcons]]
+    name = "youtube"
+    url = "https://youtube.com/@emacsforall"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/emacsforall"
+
+  [params.cover]
+    linkFullImages = true
+    responsiveImages = true
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Articles"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  name = "Series"
+  url = "/series/"
+  weight = 3
+
+[[menu.main]]
+  name = "Archives"
+  url = "/archives/"
+  weight = 4
+
+[[menu.main]]
+  name = "Search"
+  url = "/search/"
+  weight = 5
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 6
