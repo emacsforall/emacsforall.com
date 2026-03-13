@@ -7,6 +7,7 @@ tags = ["emacs", "packages", "beginners"]
 categories = ["tutorials"]
 series = ["Getting Started with Emacs"]
 draft = false
+description = "Cut through MELPA's 5,000+ packages. These 10 — Vertico, Consult, Magit, Corfu, and more — give new Emacs users the most value with the least setup."
 +++
 
 The Emacs package ecosystem is vast — MELPA alone has over 5,000 packages. That's exciting but also overwhelming. Here are the 10 packages that give you the most value for the least configuration.

@@ -15,6 +15,7 @@
 :EXPORT_FILE_NAME: your-first-hour-in-emacs
 :EXPORT_DATE: 2026-02-07
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :series ["Getting Started with Emacs"]
+:DESCRIPTION: Skip C-h t. Install Emacs 29+, configure a clean UI, and set up Vertico, Marginalia, and Magit — a modern Emacs setup in under an hour.
 :END:
 
 Most Emacs tutorials start the same way: "Run the built-in tutorial with =C-h t=." We're going to skip that entirely. Instead, let's get you productive in Emacs in under an hour with a modern setup.
@@ -100,6 +101,7 @@ You now have a clean, modern Emacs with completion, Git integration, and a solid
 :EXPORT_FILE_NAME: 10-packages-every-new-emacs-user-should-install
 :EXPORT_DATE: 2026-02-08
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :series ["Getting Started with Emacs"]
+:DESCRIPTION: Cut through MELPA's 5,000+ packages. These 10 — Vertico, Consult, Magit, Corfu, and more — give new Emacs users the most value with the least setup.
 :END:
 
 The Emacs package ecosystem is vast — MELPA alone has over 5,000 packages. That's exciting but also overwhelming. Here are the 10 packages that give you the most value for the least configuration.

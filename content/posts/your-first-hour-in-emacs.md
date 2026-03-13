@@ -7,6 +7,7 @@ tags = ["emacs", "beginners", "getting-started"]
 categories = ["tutorials"]
 series = ["Getting Started with Emacs"]
 draft = false
+description = "Skip C-h t. Install Emacs 29+, configure a clean UI, and set up Vertico, Marginalia, and Magit — a modern Emacs setup in under an hour."
 +++
 
 Most Emacs tutorials start the same way: "Run the built-in tutorial with `C-h t`." We're going to skip that entirely. Instead, let's get you productive in Emacs in under an hour with a modern setup.
