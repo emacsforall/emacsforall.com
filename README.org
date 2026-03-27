@@ -50,6 +50,28 @@ Or use the privacy-enhanced version:
 ,#+end_export
 #+end_example
 
+* Updating the Theme
+
+The [[https://github.com/adityatelange/hugo-PaperMod][PaperMod]] theme is installed as a Hugo module. To check if a newer version is available:
+
+#+begin_src shell
+go list -m -u all
+#+end_src
+
+If an update is available, it will appear in brackets after the current version, e.g. ~[v0.0.0-20260115...]~. No brackets means you're on the latest.
+
+To update all modules:
+
+#+begin_src shell
+hugo mod get -u
+#+end_src
+
+To update a specific module, specify its path (e.g. the theme):
+
+#+begin_src shell
+hugo mod get -u github.com/adityatelange/hugo-PaperMod
+#+end_src
+
 * Local Development
 
 #+begin_src shell
